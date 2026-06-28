@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Eagle Ray Australia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#1f3a6f',
+            'navy-dark': '#162d56',
+            'navy-light': '#2a4d8f',
+            cream: '#f5f2ed',
+          },
+          fontFamily: {
+            acumin: ['"Acumin Variable Concept"', '"Arial Black"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'Acumin Variable Concept';
+      font-style: normal;
+      font-weight: 900;
+      src: local('Acumin Variable Concept Black'), local('AcuminVariableConcept-Black');
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Acumin Variable Concept', 'Arial Black', -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #navbar { transition: background 0.35s ease, box-shadow 0.35s ease; }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.97) !important;
+      box-shadow: 0 1px 24px rgba(31,58,111,0.10);
+    }
+    #navbar.scrolled .nav-logo,
+    #navbar.scrolled .nav-link { color: #1f3a6f !important; }
+    #navbar.scrolled .nav-cta { background: #1f3a6f !important; color: #fff !important; }
+    #navbar.scrolled .mobile-menu-btn span { background: #1f3a6f !important; }
+
+    .page-hero {
+      background: linear-gradient(
+        160deg,
+        rgba(31,58,111,0.92) 0%,
+        rgba(22,45,86,0.75) 100%
+      ),
+      url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80')
+        center/cover no-repeat;
+      min-height: 52vh;
+    }
+
+    .accent-line { width: 48px; height: 3px; background: #1f3a6f; margin: 0 auto 1.5rem; }
+    .accent-line-left { width: 48px; height: 3px; background: #1f3a6f; margin: 0 0 1.5rem; }
+    .accent-line-white { width: 48px; height: 3px; background: #ffffff; margin: 0 0 1.5rem; }
+
+    .btn-primary { background: #1f3a6f; color: #fff; transition: background 0.2s ease, transform 0.15s ease; }
+    .btn-primary:hover { background: #162d56; transform: translateY(-1px); }
+    .btn-outline-navy { border: 2px solid #1f3a6f; color: #1f3a6f; transition: background 0.2s ease, color 0.2s ease; }
+    .btn-outline-navy:hover { background: #1f3a6f; color: #fff; }
+
+    .img-overlay { position: relative; overflow: hidden; }
+    .img-overlay img { transition: transform 0.5s ease; }
+    .img-overlay:hover img { transform: scale(1.04); }
+
+    .value-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .value-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(31,58,111,0.12); }
+
+    .timeline-item { position: relative; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 48px;
+      bottom: -32px;
+      width: 1px;
+      background: #e5e7eb;
+    }
+    .timeline-item:last-child::before { display: none; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+    }
+
+    #mobile-menu { transition: max-height 0.35s ease, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+    #mobile-menu.open { max-height: 400px; opacity: 1; }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 py-5 px-6 lg:px-12" style="background: transparent;">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img id="nav-logo-white" src="logo-white.svg" alt="Eagle Ray Australia logo" class="h-10 w-auto flex-shrink-0 transition-opacity duration-300">
+        <img id="nav-logo-navy" src="logo.svg" alt="Eagle Ray Australia logo" class="h-10 w-auto flex-shrink-0 transition-opacity duration-300 hidden">
+        <div>
+          <div class="nav-logo text-white font-acumin font-black text-base leading-tight tracking-wide uppercase transition-colors duration-300">Eagle Ray</div>
+          <div class="nav-logo text-white/70 text-xs tracking-widest uppercase transition-colors duration-300" style="font-family: inherit; font-weight: 400; letter-spacing: 0.18em;">Australia</div>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="nav-link text-white text-sm tracking-widest uppercase font-black transition-colors duration-300 hover:text-white/70">Home</a>
+        <a href="about.html" class="nav-link text-white text-sm tracking-widest uppercase font-black transition-colors duration-300 border-b border-white/50 pb-0.5">About</a>
+        <a href="contact.html" class="nav-cta btn-primary px-6 py-2.5 text-sm tracking-widest uppercase font-black rounded-none cursor-pointer">Enquire</a>
+      </div>
+      <button id="menu-toggle" class="mobile-menu-btn md:hidden flex flex-col gap-1.5 cursor-pointer" aria-label="Toggle menu">
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="block w-4 h-0.5 bg-white transition-all duration-300"></span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="md:hidden mt-4 px-2">
+      <div class="bg-white rounded-sm shadow-xl overflow-hidden">
+        <a href="index.html" class="block px-6 py-4 text-navy text-sm tracking-widest uppercase font-black border-b border-gray-100 hover:bg-gray-50">Home</a>
+        <a href="about.html" class="block px-6 py-4 text-navy text-sm tracking-widest uppercase font-black border-b border-gray-100 bg-gray-50">About</a>
+        <a href="contact.html" class="block px-6 py-4 text-white bg-navy text-sm tracking-widest uppercase font-black hover:bg-navy-dark">Enquire</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero flex items-end relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 pb-16 pt-40 w-full">
+      <p class="text-white/50 text-xs tracking-widest uppercase mb-3 font-black">Eagle Ray Australia</p>
+      <h1 class="text-white font-black font-acumin" style="font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.1;">About Us</h1>
+      <div class="w-16 h-0.5 bg-white/40 mt-5"></div>
+    </div>
+  </section>
+
+  <!-- BREADCRUMB -->
+  <div class="bg-navy/5 border-b border-navy/8 px-6 lg:px-12 py-3">
+    <div class="max-w-7xl mx-auto">
+      <nav class="flex gap-2 items-center text-xs text-navy/40 font-black tracking-widest uppercase">
+        <a href="index.html" class="hover:text-navy transition-colors cursor-pointer">Home</a>
+        <span>/</span>
+        <span class="text-navy">About</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- OUR STORY -->
+  <section class="py-24 px-6 lg:px-12 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <div class="reveal">
+          <p class="text-navy/40 text-xs tracking-widest uppercase mb-4 font-black">Our Story</p>
+          <div class="accent-line-left"></div>
+          <h2 class="font-black font-acumin text-navy mb-6" style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.15;">
+            A Family Business Built on Australian Timber
+          </h2>
+          <p class="text-gray-600 text-base leading-relaxed mb-5" style="font-family: Georgia, serif; font-weight: 400;">
+            Eagle Ray Australia was founded in 2008 by a family with deep roots in the timber industry and a strong connection to Taiwan's manufacturing sector. What began as a modest export operation has grown into a trusted supply channel for pallet, skid and wooden crate producers across Taiwan.
+          </p>
+          <p class="text-gray-600 text-base leading-relaxed mb-5" style="font-family: Georgia, serif; font-weight: 400;">
+            The name Eagle Ray reflects the company's character — the eagle ray moves with purpose and precision through open water, much like our business navigates the complex international timber trade. Grounded in Australian values of fairness and reliability, we have spent nearly two decades forging relationships that endure.
+          </p>
+          <p class="text-gray-600 text-base leading-relaxed" style="font-family: Georgia, serif; font-weight: 400;">
+            Today we remain proudly family-owned, with the same founding principles guiding every shipment — quality timber, honest dealings and on-time delivery.
+          </p>
+        </div>
+
+        <div class="reveal grid grid-cols-2 gap-4">
+          <div class="img-overlay overflow-hidden" style="height:280px;">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
+              alt="Australian forest" class="w-full h-full object-cover" loading="lazy"/>
+          </div>
+          <div class="img-overlay overflow-hidden mt-10" style="height:280px;">
+            <img src="https://images.unsplash.com/photo-1473445730015-841f29a9490b?auto=format&fit=crop&w=600&q=80"
+              alt="Timber yard" class="w-full h-full object-cover" loading="lazy"/>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE / MILESTONES -->
+  <section class="py-24 px-6 lg:px-12" style="background: #f5f2ed;">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="text-navy/40 text-xs tracking-widest uppercase mb-4 font-black">Our Journey</p>
+        <div class="accent-line"></div>
+        <h2 class="font-black font-acumin text-navy" style="font-size: clamp(1.8rem, 3.5vw, 2.6rem);">Milestones Since 2008</h2>
+      </div>
+
+      <div class="space-y-8">
+
+        <div class="timeline-item flex gap-6 reveal">
+          <div class="flex-shrink-0">
+            <div class="w-10 h-10 bg-navy flex items-center justify-center">
+              <span class="text-white font-black text-xs">08</span>
+            </div>
+          </div>
+          <div class="pb-8">
+            <div class="text-navy/40 text-xs tracking-widest uppercase font-black mb-1">2008</div>
+            <h4 class="font-black font-acumin text-navy text-lg mb-2">Founded in Sydney</h4>
+            <p class="text-gray-500 text-sm leading-relaxed" style="font-family: Georgia, serif; font-weight: 400;">Eagle Ray Australia established as a family-owned timber export company, with the first shipment of Australian hardwood delivered to a pallet manufacturer in Taiwan.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item flex gap-6 reveal" style="transition-delay:0.08s;">
+          <div class="flex-shrink-0">
+            <div class="w-10 h-10 bg-navy flex items-center justify-center">
+              <span class="text-white font-black text-xs">12</span>
+            </div>
+          </div>
+          <div class="pb-8">
+            <div class="text-navy/40 text-xs tracking-widest uppercase font-black mb-1">2012</div>
+            <h4 class="font-black font-acumin text-navy text-lg mb-2">Expanded Supplier Network</h4>
+            <p class="text-gray-500 text-sm leading-relaxed" style="font-family: Georgia, serif; font-weight: 400;">Broadened sourcing partnerships across New South Wales, Victoria and Queensland, securing consistent access to a wider range of structural hardwood grades.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item flex gap-6 reveal" style="transition-delay:0.16s;">
+          <div class="flex-shrink-0">
+            <div class="w-10 h-10 bg-navy flex items-center justify-center">
+              <span class="text-white font-black text-xs">16</span>
+            </div>
+          </div>
+          <div class="pb-8">
+            <div class="text-navy/40 text-xs tracking-widest uppercase font-black mb-1">2016</div>
+            <h4 class="font-black font-acumin text-navy text-lg mb-2">ISPM 15 Accreditation</h4>
+            <p class="text-gray-500 text-sm leading-relaxed" style="font-family: Georgia, serif; font-weight: 400;">Formalised phytosanitary treatment and certification across all export products, ensuring full compliance with international biosecurity requirements for all Taiwan-bound shipments.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item flex gap-6 reveal" style="transition-delay:0.24s;">
+          <div class="flex-shrink-0">
+            <div class="w-10 h-10 bg-navy flex items-center justify-center">
+              <span class="text-white font-black text-xs">20</span>
+            </div>
+          </div>
+          <div class="pb-8">
+            <div class="text-navy/40 text-xs tracking-widest uppercase font-black mb-1">2020</div>
+            <h4 class="font-black font-acumin text-navy text-lg mb-2">Sustained Through Global Disruption</h4>
+            <p class="text-gray-500 text-sm leading-relaxed" style="font-family: Georgia, serif; font-weight: 400;">Maintained consistent supply to all existing buyers despite global shipping disruptions, demonstrating the resilience and reliability that comes from deep direct-supplier relationships.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item flex gap-6 reveal" style="transition-delay:0.32s;">
+          <div class="flex-shrink-0">
+            <div class="w-10 h-10 bg-navy flex items-center justify-center">
+              <span class="text-white font-black text-xs">26</span>
+            </div>
+          </div>
+          <div class="pb-8">
+            <div class="text-navy/40 text-xs tracking-widest uppercase font-black mb-1">Today</div>
+            <h4 class="font-black font-acumin text-navy text-lg mb-2">17+ Years, Still Family-Run</h4>
+            <p class="text-gray-500 text-sm leading-relaxed" style="font-family: Georgia, serif; font-weight: 400;">Eagle Ray Australia continues to grow alongside long-standing buyer relationships in Taiwan, focused on quality, consistency and the personal service that sets a family business apart.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="py-24 px-6 lg:px-12 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 reveal">
+        <p class="text-navy/40 text-xs tracking-widest uppercase mb-4 font-black">What Drives Us</p>
+        <div class="accent-line"></div>
+        <h2 class="font-black font-acumin text-navy" style="font-size: clamp(1.8rem, 3.5vw, 2.6rem);">Our Values</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div class="value-card bg-navy p-8 cursor-default reveal">
+          <div class="w-10 h-10 bg-white/10 flex items-center justify-center mb-6">
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          </div>
+          <h4 class="font-black font-acumin text-white text-lg mb-3">Quality</h4>
+          <p class="text-white/55 text-sm leading-relaxed" style="font-family: Georgia, serif; font-weight: 400;">We source only timber that meets industrial-grade specifications. Every batch is inspected and certified before it leaves Australian shores.</p>
+        </div>
+
+        <div class="value-card bg-white border border-gray-100 p-8 cursor-default reveal" style="transition-delay:0.08s;">
+          <div class="w-10 h-10 bg-navy/8 flex items-center justify-center mb-6">
+            <svg class="w-5 h-5 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h4 class="font-black font-acumin text-navy text-lg mb-3">Reliability</h4>
+          <p class="text-gray-500 text-sm leading-relaxed" style="font-family: Georgia, serif; font-weight: 400;">Consistent supply, on-schedule delivery and honest communication. We don't over-promise — we deliver what we commit to, every time.</p>
+        </div>
+
+        <div class="value-card bg-white border border-gray-100 p-8 cursor-default reveal" style="transition-delay:0.16s;">
+          <div class="w-10 h-10 bg-navy/8 flex items-center justify-center mb-6">
+            <svg class="w-5 h-5 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h4 class="font-black font-acumin text-navy text-lg mb-3">Partnership</h4>
+          <p class="text-gray-500 text-sm leading-relaxed" style="font-family: Georgia, serif; font-weight: 400;">We view our buyers as long-term partners. Understanding your production schedules and volume needs allows us to plan supply proactively on your behalf.</p>
+        </div>
+
+        <div class="value-card bg-white border border-gray-100 p-8 cursor-default reveal" style="transition-delay:0.24s;">
+          <div class="w-10 h-10 bg-navy/8 flex items-center justify-center mb-6">
+            <svg class="w-5 h-5 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+          </div>
+          <h4 class="font-black font-acumin text-navy text-lg mb-3">Integrity</h4>
+          <p class="text-gray-500 text-sm leading-relaxed" style="font-family: Georgia, serif; font-weight: 400;">Transparent pricing, accurate documentation and straightforward dealings. We operate the way a family business should — with your trust front of mind.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL-WIDTH IMAGE BREAK -->
+  <div class="img-overlay" style="height:380px;">
+    <img src="https://images.unsplash.com/photo-1542621334-a254cf47733d?auto=format&fit=crop&w=1920&q=80"
+      alt="Industrial timber stacks" class="w-full h-full object-cover" loading="lazy"/>
+    <div class="absolute inset-0 bg-navy/50 flex items-center justify-center">
+      <div class="text-center reveal">
+        <blockquote class="text-white font-black font-acumin italic max-w-2xl px-6" style="font-size: clamp(1.4rem, 3vw, 2.2rem); line-height: 1.3;">
+          "Australian quality. Delivered with care. Every container, every time."
+        </blockquote>
+        <cite class="block text-white/50 text-xs tracking-widest uppercase mt-5 font-black not-italic">Eagle Ray Australia</cite>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="bg-navy py-20 px-6 lg:px-12">
+    <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 reveal">
+      <div>
+        <div class="accent-line-white"></div>
+        <h2 class="font-black font-acumin text-white" style="font-size: clamp(1.5rem, 3vw, 2.2rem);">Ready to start a conversation?</h2>
+        <p class="text-white/55 mt-2 text-base" style="font-family: Georgia, serif; font-weight: 400;">We welcome enquiries from manufacturers across Taiwan.</p>
+      </div>
+      <a href="contact.html" class="flex-shrink-0 inline-block border-2 border-white text-white px-9 py-4 text-sm tracking-widest uppercase font-black cursor-pointer transition-all duration-200 hover:bg-white hover:text-navy">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-14 px-6 lg:px-12" style="background: #162d56;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-10 mb-10">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="logo-white.svg" alt="Eagle Ray Australia" class="h-8 w-auto opacity-60">
+            <div class="text-white font-black text-sm tracking-wide uppercase">Eagle Ray Australia</div>
+          </div>
+          <p class="text-white/40 text-xs leading-relaxed" style="font-family: Georgia, serif; font-weight: 400;">Family-owned Australian timber export company, serving Taiwan's industrial packaging sector since 2008.</p>
+        </div>
+        <div>
+          <div class="text-white/30 text-xs tracking-widest uppercase font-black mb-4">Navigation</div>
+          <div class="space-y-2">
+            <a href="index.html" class="block text-white/60 text-sm hover:text-white transition-colors cursor-pointer" style="font-weight:400; font-family: Georgia, serif;">Home</a>
+            <a href="about.html" class="block text-white/60 text-sm hover:text-white transition-colors cursor-pointer" style="font-weight:400; font-family: Georgia, serif;">About Us</a>
+            <a href="contact.html" class="block text-white/60 text-sm hover:text-white transition-colors cursor-pointer" style="font-weight:400; font-family: Georgia, serif;">Contact &amp; Enquiries</a>
+          </div>
+        </div>
+        <div>
+          <div class="text-white/30 text-xs tracking-widest uppercase font-black mb-4">Contact</div>
+          <div class="space-y-2">
+            <p class="text-white/60 text-sm" style="font-family: Georgia, serif; font-weight: 400;">Sydney, New South Wales, Australia</p>
+            <a href="mailto:enquiries@eaglerayaustralia.com.au" class="block text-white/60 text-sm hover:text-white transition-colors cursor-pointer" style="font-family: Georgia, serif; font-weight: 400;">enquiries@eaglerayaustralia.com.au</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
+        <p class="text-white/25 text-xs" style="font-family: Georgia, serif;">&copy; 2008–2026 Eagle Ray Australia Pty Ltd. All rights reserved.</p>
+        <p class="text-white/25 text-xs" style="font-family: Georgia, serif;">Industrial Timber Exports · Sydney to Taiwan</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const logoWhite = document.getElementById('nav-logo-white');
+    const logoNavy = document.getElementById('nav-logo-navy');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY > 60;
+      navbar.classList.toggle('scrolled', scrolled);
+      logoWhite.classList.toggle('hidden', scrolled);
+      logoNavy.classList.toggle('hidden', !scrolled);
+    });
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+  </script>
+</body>
+</html>

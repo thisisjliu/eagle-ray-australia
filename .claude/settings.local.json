@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api *)",
+      "Bash(ls ~/.claude/skills/ 2>/dev/null || echo \"no skills dir\")",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/SKILL.md\")",
+      "Bash(mkdir -p ~/.claude/skills/frontend-design)",
+      "Bash(curl -sL \"https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/LICENSE.txt\")",
+      "WebFetch(domain:github.com)",
+      "Bash(npm view *)",
+      "Bash(npm install *)",
+      "Bash(~/.npm-global/bin/uipro init *)"
+    ]
+  }
+}

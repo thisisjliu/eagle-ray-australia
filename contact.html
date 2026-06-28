@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Eagle Ray Australia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#1f3a6f',
+            'navy-dark': '#162d56',
+            cream: '#f5f2ed',
+          },
+          fontFamily: {
+            acumin: ['"Acumin Variable Concept"', '"Arial Black"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    @font-face {
+      font-family: 'Acumin Variable Concept';
+      font-style: normal;
+      font-weight: 900;
+      src: local('Acumin Variable Concept Black'), local('AcuminVariableConcept-Black');
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Acumin Variable Concept', 'Arial Black', -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #navbar { transition: background 0.35s ease, box-shadow 0.35s ease; }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.97) !important;
+      box-shadow: 0 1px 24px rgba(31,58,111,0.10);
+    }
+    #navbar.scrolled .nav-logo,
+    #navbar.scrolled .nav-link { color: #1f3a6f !important; }
+    #navbar.scrolled .nav-cta { background: #1f3a6f !important; color: #fff !important; }
+    #navbar.scrolled .mobile-menu-btn span { background: #1f3a6f !important; }
+
+    .page-hero {
+      background: linear-gradient(
+        160deg,
+        rgba(31,58,111,0.94) 0%,
+        rgba(22,45,86,0.80) 100%
+      ),
+      url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=80')
+        center/cover no-repeat;
+      min-height: 46vh;
+    }
+
+    .accent-line-left { width: 48px; height: 3px; background: #1f3a6f; margin: 0 0 1.5rem; }
+
+    /* Form inputs */
+    .form-input {
+      width: 100%;
+      border: 1.5px solid #e5e7eb;
+      padding: 0.85rem 1rem;
+      font-family: Georgia, serif;
+      font-size: 0.875rem;
+      color: #111827;
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      appearance: none;
+      border-radius: 0;
+    }
+    .form-input:focus {
+      border-color: #1f3a6f;
+      box-shadow: 0 0 0 3px rgba(31,58,111,0.08);
+    }
+    .form-input::placeholder { color: #9ca3af; }
+
+    .form-label {
+      display: block;
+      font-family: 'Acumin Variable Concept', 'Arial Black', sans-serif;
+      font-weight: 900;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #1f3a6f;
+      margin-bottom: 0.5rem;
+    }
+
+    .btn-submit {
+      background: #1f3a6f;
+      color: #fff;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-family: 'Acumin Variable Concept', 'Arial Black', sans-serif;
+      font-weight: 900;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+      width: 100%;
+    }
+    .btn-submit:hover { background: #162d56; transform: translateY(-1px); }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    /* Contact info card */
+    .info-card {
+      border-left: 3px solid #1f3a6f;
+      padding-left: 1.25rem;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+      .reveal.visible { opacity: 1; transform: translateY(0); }
+    }
+
+    #mobile-menu { transition: max-height 0.35s ease, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+    #mobile-menu.open { max-height: 400px; opacity: 1; }
+
+    /* Success message */
+    #form-success {
+      display: none;
+      background: #f0fdf4;
+      border: 1.5px solid #bbf7d0;
+      padding: 1.25rem 1.5rem;
+    }
+    #form-error {
+      display: none;
+      background: #fef2f2;
+      border: 1.5px solid #fecaca;
+      padding: 1.25rem 1.5rem;
+    }
+
+    select.form-input { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%231f3a6f'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 1.25rem; padding-right: 2.5rem; }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 py-5 px-6 lg:px-12" style="background: transparent;">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img id="nav-logo-white" src="logo-white.svg" alt="Eagle Ray Australia logo" class="h-10 w-auto flex-shrink-0 transition-opacity duration-300">
+        <img id="nav-logo-navy" src="logo.svg" alt="Eagle Ray Australia logo" class="h-10 w-auto flex-shrink-0 transition-opacity duration-300 hidden">
+        <div>
+          <div class="nav-logo text-white font-acumin font-black text-base leading-tight tracking-wide uppercase transition-colors duration-300">Eagle Ray</div>
+          <div class="nav-logo text-white/70 text-xs tracking-widest uppercase transition-colors duration-300" style="font-family: inherit; font-weight: 400; letter-spacing: 0.18em;">Australia</div>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="nav-link text-white text-sm tracking-widest uppercase font-black transition-colors duration-300 hover:text-white/70">Home</a>
+        <a href="about.html" class="nav-link text-white text-sm tracking-widest uppercase font-black transition-colors duration-300 hover:text-white/70">About</a>
+        <a href="contact.html" class="nav-cta btn-submit px-6 py-2.5 text-sm tracking-widest uppercase font-black" style="width:auto; transform:none;">Enquire</a>
+      </div>
+      <button id="menu-toggle" class="mobile-menu-btn md:hidden flex flex-col gap-1.5 cursor-pointer" aria-label="Toggle menu">
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="block w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="block w-4 h-0.5 bg-white transition-all duration-300"></span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="md:hidden mt-4 px-2">
+      <div class="bg-white shadow-xl overflow-hidden">
+        <a href="index.html" class="block px-6 py-4 text-navy text-sm tracking-widest uppercase font-black border-b border-gray-100 hover:bg-gray-50">Home</a>
+        <a href="about.html" class="block px-6 py-4 text-navy text-sm tracking-widest uppercase font-black border-b border-gray-100 hover:bg-gray-50">About</a>
+        <a href="contact.html" class="block px-6 py-4 text-white bg-navy text-sm tracking-widest uppercase font-black">Enquire</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero flex items-end relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 pb-16 pt-40 w-full">
+      <p class="text-white/50 text-xs tracking-widest uppercase mb-3 font-black">Get In Touch</p>
+      <h1 class="text-white font-black font-acumin" style="font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.1;">Contact &amp; Enquiries</h1>
+      <div class="w-16 h-0.5 bg-white/40 mt-5"></div>
+    </div>
+  </section>
+
+  <!-- BREADCRUMB -->
+  <div class="bg-navy/5 border-b border-navy/8 px-6 lg:px-12 py-3">
+    <div class="max-w-7xl mx-auto">
+      <nav class="flex gap-2 items-center text-xs text-navy/40 font-black tracking-widest uppercase">
+        <a href="index.html" class="hover:text-navy transition-colors cursor-pointer">Home</a>
+        <span>/</span>
+        <span class="text-navy">Contact</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <section class="py-20 px-6 lg:px-12" style="background: #f5f2ed;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-5 gap-12 items-start">
+
+        <!-- FORM — 3 cols -->
+        <div class="lg:col-span-3 reveal">
+          <div class="bg-white p-10 shadow-sm">
+
+            <p class="text-navy/40 text-xs tracking-widest uppercase mb-3 font-black">Send an Enquiry</p>
+            <div class="accent-line-left"></div>
+            <h2 class="font-black font-acumin text-navy mb-2" style="font-size: clamp(1.5rem, 2.5vw, 2rem);">Tell Us What You Need</h2>
+            <p class="text-gray-500 text-sm leading-relaxed mb-8" style="font-family: Georgia, serif; font-weight: 400;">
+              Whether you're looking for a new supplier or want to discuss volume pricing, we'll get back to you promptly.
+            </p>
+
+            <!-- Success / Error messages -->
+            <div id="form-success" class="mb-6">
+              <p class="font-black text-green-800 text-sm tracking-wide">Enquiry sent successfully.</p>
+              <p class="text-green-700 text-sm mt-1" style="font-family: Georgia, serif;">Thank you — we'll be in touch within 1–2 business days.</p>
+            </div>
+            <div id="form-error" class="mb-6">
+              <p class="font-black text-red-800 text-sm tracking-wide">Something went wrong.</p>
+              <p class="text-red-700 text-sm mt-1" style="font-family: Georgia, serif;">Please try again or email us directly.</p>
+            </div>
+
+            <form id="enquiry-form" novalidate>
+              <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                <div>
+                  <label class="form-label" for="full-name">Full Name <span class="text-red-400">*</span></label>
+                  <input class="form-input" type="text" id="full-name" name="full_name" placeholder="Your name" required autocomplete="name" />
+                  <p class="field-error text-red-500 text-xs mt-1.5 hidden" style="font-family: Georgia, serif;">Please enter your full name.</p>
+                </div>
+                <div>
+                  <label class="form-label" for="company">Company / Organisation</label>
+                  <input class="form-input" type="text" id="company" name="company" placeholder="Your company" autocomplete="organization" />
+                </div>
+              </div>
+
+              <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                <div>
+                  <label class="form-label" for="email">Email Address <span class="text-red-400">*</span></label>
+                  <input class="form-input" type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email" />
+                  <p class="field-error text-red-500 text-xs mt-1.5 hidden" style="font-family: Georgia, serif;">Please enter a valid email address.</p>
+                </div>
+                <div>
+                  <label class="form-label" for="phone">Phone Number</label>
+                  <input class="form-input" type="tel" id="phone" name="phone" placeholder="+886 ..." autocomplete="tel" />
+                </div>
+              </div>
+
+              <div class="mb-5">
+                <label class="form-label" for="product">Product of Interest</label>
+                <select class="form-input" id="product" name="product">
+                  <option value="" disabled selected>Select a product type</option>
+                  <option value="pallet">Pallet Timber</option>
+                  <option value="skid">Skid Timber</option>
+                  <option value="crate">Wooden Crate Timber</option>
+                  <option value="mixed">Mixed / Multiple Products</option>
+                  <option value="other">Other / Unsure</option>
+                </select>
+              </div>
+
+              <div class="mb-5">
+                <label class="form-label" for="volume">Estimated Monthly Volume</label>
+                <select class="form-input" id="volume" name="volume">
+                  <option value="" disabled selected>Select approximate volume</option>
+                  <option value="under20">Under 20 m³ per month</option>
+                  <option value="20-50">20 – 50 m³ per month</option>
+                  <option value="50-100">50 – 100 m³ per month</option>
+                  <option value="100plus">100+ m³ per month</option>
+                  <option value="unsure">Not sure yet</option>
+                </select>
+              </div>
+
+              <div class="mb-7">
+                <label class="form-label" for="message">Message <span class="text-red-400">*</span></label>
+                <textarea class="form-input" id="message" name="message" rows="5" placeholder="Describe your requirements — timber species preferences, dimensions, delivery schedule, or any questions you have." required></textarea>
+                <p class="field-error text-red-500 text-xs mt-1.5 hidden" style="font-family: Georgia, serif;">Please include a message.</p>
+              </div>
+
+              <button type="submit" class="btn-submit" id="submit-btn">
+                Send Enquiry
+              </button>
+
+              <p class="text-gray-400 text-xs mt-4 text-center" style="font-family: Georgia, serif;">We respond within 1–2 business days (Sydney time).</p>
+            </form>
+          </div>
+        </div>
+
+        <!-- CONTACT DETAILS — 2 cols -->
+        <div class="lg:col-span-2 space-y-6 reveal" style="transition-delay: 0.12s;">
+
+          <!-- Direct contact -->
+          <div class="bg-white p-8 shadow-sm">
+            <p class="text-navy/40 text-xs tracking-widest uppercase font-black mb-5">Direct Contact</p>
+
+            <div class="space-y-6">
+
+              <div class="info-card">
+                <div class="text-navy/40 text-xs tracking-widest uppercase font-black mb-1.5">Email</div>
+                <a href="mailto:enquiries@eaglerayaustralia.com.au" class="text-navy font-black text-sm hover:text-navy-dark transition-colors cursor-pointer break-all">
+                  enquiries@eaglerayaustralia.com.au
+                </a>
+              </div>
+
+              <div class="info-card">
+                <div class="text-navy/40 text-xs tracking-widest uppercase font-black mb-1.5">Phone</div>
+                <a href="tel:+61200000000" class="text-navy font-black text-sm hover:text-navy-dark transition-colors cursor-pointer">
+                  +61 2 0000 0000
+                </a>
+                <p class="text-gray-400 text-xs mt-1" style="font-family: Georgia, serif;">Mon – Fri, 9am – 5pm AEST</p>
+              </div>
+
+              <div class="info-card">
+                <div class="text-navy/40 text-xs tracking-widest uppercase font-black mb-1.5">Location</div>
+                <p class="text-navy font-black text-sm">Sydney, New South Wales</p>
+                <p class="text-gray-500 text-xs mt-0.5" style="font-family: Georgia, serif;">Australia</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Export markets -->
+          <div class="bg-navy p-8 shadow-sm">
+            <p class="text-white/40 text-xs tracking-widest uppercase font-black mb-5">Export Focus</p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-6 h-6 bg-white/10 flex items-center justify-center mt-0.5">
+                  <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <div class="text-white font-black text-sm">Taiwan Market Specialists</div>
+                  <div class="text-white/45 text-xs mt-0.5" style="font-family: Georgia, serif;">Exclusive focus on Taiwanese pallet &amp; crate manufacturers</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-6 h-6 bg-white/10 flex items-center justify-center mt-0.5">
+                  <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <div class="text-white font-black text-sm">ISPM 15 Certified</div>
+                  <div class="text-white/45 text-xs mt-0.5" style="font-family: Georgia, serif;">All timber treated &amp; certified for international export</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-6 h-6 bg-white/10 flex items-center justify-center mt-0.5">
+                  <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <div class="text-white font-black text-sm">Direct from Australian Sawmills</div>
+                  <div class="text-white/45 text-xs mt-0.5" style="font-family: Georgia, serif;">No middlemen — consistent quality &amp; pricing</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Response time note -->
+          <div class="border border-navy/10 p-6">
+            <div class="flex gap-4 items-start">
+              <div class="flex-shrink-0 w-8 h-8 bg-navy/8 flex items-center justify-center mt-0.5">
+                <svg class="w-4 h-4 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <div class="font-black text-navy text-sm mb-1">Quick Response</div>
+                <p class="text-gray-500 text-xs leading-relaxed" style="font-family: Georgia, serif; font-weight: 400;">As a family business, all enquiries go directly to a decision-maker. You'll hear from us within 1–2 business days, often sooner.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-14 px-6 lg:px-12" style="background: #162d56;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-10 mb-10">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="logo-white.svg" alt="Eagle Ray Australia" class="h-8 w-auto opacity-60">
+            <div class="text-white font-black text-sm tracking-wide uppercase">Eagle Ray Australia</div>
+          </div>
+          <p class="text-white/40 text-xs leading-relaxed" style="font-family: Georgia, serif; font-weight: 400;">Family-owned Australian timber export company, serving Taiwan's industrial packaging sector since 2008.</p>
+        </div>
+        <div>
+          <div class="text-white/30 text-xs tracking-widest uppercase font-black mb-4">Navigation</div>
+          <div class="space-y-2">
+            <a href="index.html" class="block text-white/60 text-sm hover:text-white transition-colors cursor-pointer" style="font-weight:400; font-family: Georgia, serif;">Home</a>
+            <a href="about.html" class="block text-white/60 text-sm hover:text-white transition-colors cursor-pointer" style="font-weight:400; font-family: Georgia, serif;">About Us</a>
+            <a href="contact.html" class="block text-white/60 text-sm hover:text-white transition-colors cursor-pointer" style="font-weight:400; font-family: Georgia, serif;">Contact &amp; Enquiries</a>
+          </div>
+        </div>
+        <div>
+          <div class="text-white/30 text-xs tracking-widest uppercase font-black mb-4">Contact</div>
+          <div class="space-y-2">
+            <p class="text-white/60 text-sm" style="font-family: Georgia, serif; font-weight: 400;">Sydney, New South Wales, Australia</p>
+            <a href="mailto:enquiries@eaglerayaustralia.com.au" class="block text-white/60 text-sm hover:text-white transition-colors cursor-pointer" style="font-family: Georgia, serif; font-weight: 400;">enquiries@eaglerayaustralia.com.au</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
+        <p class="text-white/25 text-xs" style="font-family: Georgia, serif;">&copy; 2008–2026 Eagle Ray Australia Pty Ltd. All rights reserved.</p>
+        <p class="text-white/25 text-xs" style="font-family: Georgia, serif;">Industrial Timber Exports · Sydney to Taiwan</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const navbar = document.getElementById('navbar');
+    const logoWhite = document.getElementById('nav-logo-white');
+    const logoNavy = document.getElementById('nav-logo-navy');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY > 60;
+      navbar.classList.toggle('scrolled', scrolled);
+      logoWhite.classList.toggle('hidden', scrolled);
+      logoNavy.classList.toggle('hidden', !scrolled);
+    });
+
+    // Mobile menu
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    });
+
+    // Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+    // Form validation & submission
+    const form = document.getElementById('enquiry-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    function validateField(input) {
+      const error = input.closest('div').querySelector('.field-error');
+      if (!input.validity.valid) {
+        if (error) error.classList.remove('hidden');
+        input.style.borderColor = '#f87171';
+        return false;
+      } else {
+        if (error) error.classList.add('hidden');
+        input.style.borderColor = '#1f3a6f';
+        return true;
+      }
+    }
+
+    form.querySelectorAll('[required]').forEach(input => {
+      input.addEventListener('blur', () => validateField(input));
+      input.addEventListener('input', () => validateField(input));
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const required = form.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(input => { if (!validateField(input)) valid = false; });
+      if (!valid) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      // Simulate submission (replace with real endpoint)
+      await new Promise(r => setTimeout(r, 1200));
+
+      document.getElementById('form-success').style.display = 'block';
+      form.reset();
+      submitBtn.textContent = 'Send Enquiry';
+      submitBtn.disabled = false;
+
+      form.querySelectorAll('.form-input').forEach(i => i.style.borderColor = '');
+      window.scrollTo({ top: form.offsetTop - 120, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
