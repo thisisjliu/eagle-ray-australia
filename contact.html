@@ -1,546 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get in Touch — Eagle Ray Australia</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Eagle Ray Australia</title>
+<meta name="description" content="Get in touch with Eagle Ray Australia — timber procurement, export logistics, and property investment enquiries.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #F5F3F0; color: #211F26; }
+::selection { background: #C1622A; color: #FAF9F7; }
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+input, select, textarea { font-family: 'Inter', sans-serif; }
+input::placeholder, textarea::placeholder { color: rgba(33,31,38,0.4); }
 
-    :root {
-      --ironbark: #18140F;
-      --dark-timber: #221D16;
-      --amber: #D4832A;
-      --forest: #2C4438;
-      --stone: #F2EBE0;
-    }
+/* NAV — solid on this page (no hero behind it) */
+nav {
+  position: relative; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 48px;
+  background: #211F26;
+}
+.nav-logo {
+  font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 19px;
+  letter-spacing: 0.02em; color: #FAF9F7; line-height: 1;
+}
+.nav-logo span { opacity: 0.65; font-weight: 400; }
+.nav-links {
+  display: flex; align-items: center; gap: 36px;
+  font-size: 14px; font-weight: 500; color: rgba(250,249,247,0.94);
+}
+.nav-links a { transition: color 0.2s; }
+.nav-links a:hover { color: #C1622A; }
+.nav-cta-active {
+  padding: 9px 20px;
+  border: 1px solid #C1622A;
+  border-radius: 2px;
+  background: #C1622A;
+  color: #FAF9F7 !important;
+}
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--ironbark);
-      color: var(--stone);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
+.eyebrow {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: #C1622A; margin-bottom: 22px;
+}
 
-    /* ─── NAV ───────────────────────────────────────────────────────── */
-    #nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 48px;
-      z-index: 100;
-      background: rgba(24, 20, 15, 0.94);
-      border-bottom: 1px solid rgba(242, 235, 224, 0.07);
-      backdrop-filter: blur(12px);
-    }
+/* HEADER BAND */
+#page-header {
+  background: #211F26; padding: 70px 48px 110px;
+}
+#page-header .inner { max-width: 1240px; margin: 0 auto; }
+#page-header h1 {
+  font-family: 'Oswald', sans-serif; font-weight: 600;
+  font-size: 60px; line-height: 1.02; letter-spacing: -0.01em;
+  color: #FAF9F7; text-transform: uppercase; margin-bottom: 26px; max-width: 700px;
+}
+#page-header p {
+  font-size: 17px; line-height: 1.6; color: rgba(250,249,247,0.72);
+  max-width: 540px; margin-bottom: 34px;
+}
+.email-row {
+  display: flex; align-items: center; gap: 12px;
+}
+.email-label {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(250,249,247,0.6);
+}
+.email-link {
+  font-size: 16px; color: #C1622A; transition: color 0.2s;
+}
+.email-link:hover { color: rgba(193,98,42,0.7); }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-    }
+/* FORM SECTION */
+#form-section {
+  padding: 0 48px 140px;
+  max-width: 800px; margin: -60px auto 0;
+  position: relative;
+}
+.form-card {
+  background: #FAF9F7;
+  border: 1px solid #D8D6D2;
+  border-radius: 4px;
+  padding: 56px;
+  box-shadow: 0 24px 60px -20px rgba(20,18,16,0.18);
+}
+.form-card .eyebrow { margin-bottom: 14px; }
+.form-card h2 {
+  font-family: 'Oswald', sans-serif; font-weight: 600;
+  font-size: 26px; text-transform: uppercase; margin-bottom: 36px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.form-group { margin-bottom: 24px; }
+.form-group:last-of-type { margin-bottom: 34px; }
+label {
+  display: block; font-size: 12.5px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: #4B4A52;
+  margin-bottom: 9px;
+}
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  width: 100%; padding: 13px 14px;
+  border: 1px solid #D0CDCA; border-radius: 3px;
+  font-size: 15px; background: #FEFDFB; color: #211F26;
+  outline: none; transition: border-color 0.2s;
+  appearance: none; -webkit-appearance: none;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus { border-color: #C1622A; }
+textarea { resize: vertical; }
+.form-footer {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+}
+.form-note { font-size: 13.5px; color: #585763; }
+.btn-submit {
+  padding: 15px 34px; background: #C1622A; color: #FAF9F7;
+  border: none; border-radius: 3px; font-size: 15px; font-weight: 600;
+  letter-spacing: 0.02em; cursor: pointer; white-space: nowrap;
+  transition: background 0.2s;
+}
+.btn-submit:hover { background: #9C4E22; }
 
-    .nav-logo svg { width: 52px; height: auto; flex-shrink: 0; }
-
-    .nav-logo-text { display: flex; flex-direction: column; gap: 3px; }
-
-    .nav-name {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--stone);
-      line-height: 1;
-    }
-
-    .nav-sub {
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--amber);
-      line-height: 1;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(242, 235, 224, 0.5);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--stone); }
-    .nav-links .active { color: var(--stone); }
-
-    /* ─── PAGE HEADER ───────────────────────────────────────────────── */
-    #page-header {
-      padding: 160px 48px 100px;
-      border-bottom: 1px solid rgba(242, 235, 224, 0.06);
-      background: var(--dark-timber);
-    }
-
-    .header-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: end;
-    }
-
-    .header-label {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .header-label::before {
-      content: '';
-      width: 20px;
-      height: 1px;
-      background: var(--amber);
-      flex-shrink: 0;
-    }
-
-    .page-title {
-      font-size: clamp(52px, 8vw, 112px);
-      font-weight: 800;
-      line-height: 0.92;
-      letter-spacing: -0.03em;
-      color: var(--stone);
-    }
-
-    .page-title em {
-      font-style: normal;
-      color: rgba(242, 235, 224, 0.3);
-    }
-
-    .header-body {
-      font-size: 16px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: rgba(242, 235, 224, 0.5);
-      margin-bottom: 32px;
-      max-width: 440px;
-    }
-
-    .header-detail {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .detail-row {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 13px;
-      color: rgba(242, 235, 224, 0.35);
-    }
-
-    .detail-row strong {
-      font-weight: 600;
-      color: rgba(242, 235, 224, 0.6);
-      min-width: 60px;
-    }
-
-    .detail-row a {
-      color: rgba(242, 235, 224, 0.5);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .detail-row a:hover { color: var(--amber); }
-
-    /* ─── MAIN CONTENT ──────────────────────────────────────────────── */
-    #content {
-      padding: 100px 48px;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    /* ─── FORM ──────────────────────────────────────────────────────── */
-    .contact-form {
-      background: var(--dark-timber);
-      border: 1px solid rgba(242, 235, 224, 0.06);
-      padding: 64px 72px;
-    }
-
-    .form-title {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--stone);
-      margin-bottom: 6px;
-    }
-
-    .form-sub {
-      font-size: 13px;
-      font-weight: 300;
-      color: rgba(242, 235, 224, 0.32);
-      margin-bottom: 40px;
-      line-height: 1.6;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 32px;
-    }
-
-    .form-field { margin-bottom: 36px; }
-    .form-field.full { grid-column: 1 / -1; }
-
-    .form-field label {
-      display: block;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(242, 235, 224, 0.3);
-      margin-bottom: 10px;
-      transition: color 0.2s;
-    }
-
-    .form-field:focus-within label { color: var(--amber); }
-
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      width: 100%;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(242, 235, 224, 0.14);
-      padding: 10px 0 12px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--stone);
-      outline: none;
-      transition: border-color 0.2s;
-      -webkit-appearance: none;
-      appearance: none;
-      border-radius: 0;
-    }
-
-    .form-field select {
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23D4832A' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 2px center;
-      padding-right: 20px;
-    }
-
-    .form-field select option {
-      background: var(--dark-timber);
-      color: var(--stone);
-    }
-
-    .form-field textarea {
-      resize: vertical;
-      min-height: 120px;
-      line-height: 1.65;
-    }
-
-    .form-field input:focus,
-    .form-field select:focus,
-    .form-field textarea:focus { border-bottom-color: var(--amber); }
-
-    .form-field input::placeholder,
-    .form-field textarea::placeholder { color: rgba(242, 235, 224, 0.16); }
-
-    .form-submit {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 8px;
-      gap: 24px;
-    }
-
-    .form-note {
-      font-size: 11px;
-      font-weight: 300;
-      color: rgba(242, 235, 224, 0.18);
-      line-height: 1.5;
-    }
-
-    .btn-submit {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--stone);
-      background: var(--forest);
-      border: none;
-      padding: 18px 36px;
-      cursor: pointer;
-      transition: background 0.2s;
-      flex-shrink: 0;
-    }
-
-    .btn-submit:hover { background: #365048; }
-    .btn-submit::after { content: '→'; font-size: 13px; }
-
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    .form-success.visible { display: block; }
-
-    .success-mark {
-      width: 48px;
-      height: 48px;
-      border: 1.5px solid var(--amber);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 24px;
-      font-size: 18px;
-      color: var(--amber);
-    }
-
-    .success-heading {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--stone);
-      margin-bottom: 12px;
-    }
-
-    .success-body {
-      font-size: 14px;
-      font-weight: 300;
-      color: rgba(242, 235, 224, 0.38);
-      line-height: 1.7;
-    }
-
-    /* ─── FOOTER ────────────────────────────────────────────────────── */
-    footer {
-      background: var(--ironbark);
-      border-top: 1px solid rgba(242, 235, 224, 0.05);
-      padding: 36px 48px;
-      margin-top: 40px;
-    }
-
-    .footer-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .footer-logo svg { width: 28px; }
-
-    .footer-name {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(242, 235, 224, 0.3);
-    }
-
-    .footer-copy {
-      font-size: 11px;
-      color: rgba(242, 235, 224, 0.16);
-      letter-spacing: 0.03em;
-    }
-
-    .footer-nav { display: flex; gap: 28px; list-style: none; }
-
-    .footer-nav a {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(242, 235, 224, 0.22);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-nav a:hover { color: rgba(242, 235, 224, 0.6); }
-
-    /* ─── RESPONSIVE ─────────────────────────────────────────────────── */
-    @media (max-width: 900px) {
-      #nav { padding: 0 24px; }
-      .nav-links { display: none; }
-
-      #page-header { padding: 120px 24px 64px; }
-      .header-inner { grid-template-columns: 1fr; gap: 32px; }
-
-      #content { padding: 40px 24px; }
-
-      .contact-form { padding: 36px 28px; }
-      .form-grid { grid-template-columns: 1fr; }
-      .form-submit { flex-direction: column; align-items: flex-start; }
-
-      footer { padding: 32px 24px; }
-      .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
-      .footer-nav { justify-content: center; }
-    }
-  </style>
+/* FOOTER */
+footer {
+  padding: 40px 48px; display: flex; align-items: center; justify-content: space-between;
+  background: #211F26; border-top: 1px solid rgba(80,78,75,0.4);
+}
+.footer-brand {
+  font-family: 'Oswald', sans-serif; font-weight: 600;
+  font-size: 14px; color: rgba(250,249,247,0.7);
+}
+.footer-brand span { opacity: 0.6; font-weight: 400; }
+.footer-links { display: flex; gap: 28px; font-size: 13.5px; color: rgba(250,249,247,0.7); }
+.footer-links a { transition: color 0.2s; }
+.footer-links a:hover { color: #C1622A; }
+</style>
 </head>
 <body>
 
-  <!-- ── NAV ──────────────────────────────────────────────────────── -->
-  <nav id="nav">
-    <a href="index.html" class="nav-logo" aria-label="Eagle Ray Australia — home">
-      <svg viewBox="0 0 170.34 147.63" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path fill="#D4832A" d="M90.98,44.19l29.65-4.95c9.35-1.56,19.9-8.99,23.56-16.59h0s-46.59,7.77-46.59,7.77c-9.81,1.64-21.04,7.62-26.32,15.82L26.14,124.97l15.56-21.26c5.76-8.96,16.11-15.71,26.82-17.5l32.4-5.4c10.22-1.7,21.75-9.82,25.75-18.13h0s-50.9,8.49-50.9,8.49c-8.82,1.47-15.66,4.92-21.63,11.58l2.76-4.28c4.91-7.64,12.01-12.01,21.14-13.54l27.61-4.61c8.71-1.45,18.53-8.37,21.94-15.45h0s-43.38,7.24-43.38,7.24c-7.16,1.19-13.66,4.84-18.7,10.09l1.38-2.15c5.28-8.2,14.28-14.23,24.09-15.87Z"/>
-      </svg>
-      <div class="nav-logo-text">
-        <span class="nav-name">Eagle Ray Australia</span>
-        <span class="nav-sub">Timber &amp; Investment</span>
-      </div>
-    </a>
-    <ul class="nav-links" role="list">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="index.html#services">Services</a></li>
-      <li><a href="contact.html" class="active">Get in Touch</a></li>
-    </ul>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">EAGLE RAY <span>AUSTRALIA</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="index.html#services">Services</a>
+    <a href="contact.html" class="nav-cta-active">Get in Touch</a>
+  </div>
+</nav>
 
-  <!-- ── PAGE HEADER ───────────────────────────────────────────────── -->
-  <header id="page-header">
-    <div class="header-inner">
-      <div>
-        <p class="header-label">Get in Touch</p>
-        <h1 class="page-title">Start a<br>conversation<em>.</em></h1>
-      </div>
-      <div>
-        <p class="header-body">Tell us about your timber requirements — volume, specification, destination — and we'll come back to you with a practical response, not a sales pitch.</p>
-        <div class="header-detail">
-          <div class="detail-row">
-            <strong>Email</strong>
-            <a href="mailto:sales@eaglerayaustralia.com.au">sales@eaglerayaustralia.com.au</a>
-          </div>
+<!-- HEADER BAND -->
+<section id="page-header">
+  <div class="inner">
+    <div class="eyebrow">Get in Touch</div>
+    <h1>Start a conversation.</h1>
+    <p>Tell us about your timber requirements &mdash; volume, specification, destination &mdash; and we'll come back to you with a practical response, not a sales pitch.</p>
+    <div class="email-row">
+      <span class="email-label">Email</span>
+      <a href="mailto:sales@eaglerayaustralia.com.au" class="email-link">sales@eaglerayaustralia.com.au</a>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section id="form-section">
+  <div class="form-card">
+    <div class="eyebrow">Get in touch</div>
+    <h2>Fill in the details below and we'll follow up directly.</h2>
+    <form>
+      <div class="form-row">
+        <div>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Jane Smith">
+        </div>
+        <div>
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="jane@company.com">
         </div>
       </div>
-    </div>
-  </header>
-
-  <!-- ── CONTENT ───────────────────────────────────────────────────── -->
-  <main id="content">
-
-    <div class="contact-form">
-      <div id="form-wrap">
-        <h2 class="form-title">Get in touch</h2>
-        <p class="form-sub">Fill in the details below and we'll follow up directly.</p>
-        <form id="contact-form" novalidate>
-          <div class="form-grid">
-            <div class="form-field">
-              <label for="full-name">Full Name</label>
-              <input type="text" id="full-name" name="full-name" autocomplete="name" placeholder="Your name" required>
-            </div>
-            <div class="form-field">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" autocomplete="email" placeholder="you@company.com" required>
-            </div>
-            <div class="form-field">
-              <label for="company">Company</label>
-              <input type="text" id="company" name="company" autocomplete="organization" placeholder="Company name">
-            </div>
-            <div class="form-field">
-              <label for="enquiry-type">Enquiry Type</label>
-              <select id="enquiry-type" name="enquiry-type" required>
-                <option value="" disabled selected>Select one</option>
-                <option value="procurement">Timber Procurement</option>
-                <option value="logistics">Export &amp; Logistics</option>
-                <option value="investment">Property Investment</option>
-                <option value="general">General Enquiry</option>
-              </select>
-            </div>
-            <div class="form-field full">
-              <label for="message">Your Message</label>
-              <textarea id="message" name="message" placeholder="Describe your requirements — species, volume, destination, timeframe..." required></textarea>
-            </div>
-          </div>
-          <div class="form-submit">
-            <p class="form-note">We respond within 1 business day.</p>
-            <button type="submit" class="btn-submit">Send Enquiry</button>
-          </div>
-        </form>
+      <div class="form-group">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" placeholder="Company name">
       </div>
-      <div class="form-success" id="form-success" role="status" aria-live="polite">
-        <div class="success-mark" aria-hidden="true">✓</div>
-        <h3 class="success-heading">Message sent.</h3>
-        <p class="success-body">Thank you for reaching out. We'll be in touch within 1 business day.</p>
+      <div class="form-group">
+        <label for="enquiry">Enquiry Type</label>
+        <select id="enquiry" name="enquiry">
+          <option value="">Select one</option>
+          <option value="timber">Timber Procurement</option>
+          <option value="logistics">Export &amp; Logistics</option>
+          <option value="property">Property Investment</option>
+          <option value="general">General Enquiry</option>
+        </select>
       </div>
-    </div>
+      <div class="form-group" style="margin-bottom:34px;">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Volume, specification, destination, timeline&hellip;"></textarea>
+      </div>
+      <div class="form-footer">
+        <span class="form-note">We respond within 1 business day.</span>
+        <button type="submit" class="btn-submit">Send Enquiry</button>
+      </div>
+    </form>
+  </div>
+</section>
 
-  </main>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">EAGLE RAY AUSTRALIA <span>&copy; 2026 Eagle Ray Australia Pty Ltd</span></div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="about.html">About</a>
+  </div>
+</footer>
 
-
-  <!-- ── FOOTER ────────────────────────────────────────────────────── -->
-  <footer>
-    <div class="footer-inner">
-      <a href="index.html" class="footer-logo" aria-label="Eagle Ray Australia home">
-        <svg viewBox="0 0 170.34 147.63" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path fill="#D4832A" d="M90.98,44.19l29.65-4.95c9.35-1.56,19.9-8.99,23.56-16.59h0s-46.59,7.77-46.59,7.77c-9.81,1.64-21.04,7.62-26.32,15.82L26.14,124.97l15.56-21.26c5.76-8.96,16.11-15.71,26.82-17.5l32.4-5.4c10.22-1.7,21.75-9.82,25.75-18.13h0s-50.9,8.49-50.9,8.49c-8.82,1.47-15.66,4.92-21.63,11.58l2.76-4.28c4.91-7.64,12.01-12.01,21.14-13.54l27.61-4.61c8.71-1.45,18.53-8.37,21.94-15.45h0s-43.38,7.24-43.38,7.24c-7.16,1.19-13.66,4.84-18.7,10.09l1.38-2.15c5.28-8.2,14.28-14.23,24.09-15.87Z"/>
-        </svg>
-        <span class="footer-name">Eagle Ray Australia</span>
-      </a>
-      <span class="footer-copy">© 2026 Eagle Ray Australia Pty Ltd</span>
-      <ul class="footer-nav" role="list">
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#services">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name  = document.getElementById('full-name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const msg   = document.getElementById('message').value.trim();
-      if (!name || !email || !msg) {
-        const first = [...this.querySelectorAll('[required]')].find(el => !el.value.trim());
-        if (first) first.focus();
-        return;
-      }
-      document.getElementById('form-wrap').style.display = 'none';
-      document.getElementById('form-success').classList.add('visible');
-    });
-  </script>
 </body>
 </html>
