@@ -15,7 +15,16 @@ body { font-family: 'Inter', sans-serif; background: #F5F3F0; color: #211F26; }
 a { color: inherit; text-decoration: none; }
 img { display: block; }
 
-/* NAV */
+.nav-toggle { display: none; }
+.hamburger-btn {
+  display: none; width: 26px; height: 18px;
+  flex-direction: column; justify-content: space-between;
+  cursor: pointer; flex-shrink: 0;
+}
+.hamburger-btn span { display: block; height: 2px; width: 100%; background: #FAF9F7; border-radius: 2px; }
+.nav-scrim { display: none; }
+.mobile-nav-panel { display: none; }
+
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
@@ -24,94 +33,74 @@ nav {
   backdrop-filter: blur(6px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.nav-logo {
-  font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 19px;
-  letter-spacing: 0.02em; color: #FAF9F7; line-height: 1;
-}
-.nav-logo span { opacity: 0.65; font-weight: 400; }
-.nav-links {
+.nav-logo img { height: 50px; width: auto; }
+.nav-links-desktop {
   display: flex; align-items: center; gap: 36px;
   font-size: 14px; font-weight: 500; color: rgba(250,249,247,0.94);
 }
-.nav-links a { transition: color 0.2s; }
-.nav-links a:hover { color: #C1622A; }
+.nav-links-desktop a { transition: color 0.2s; }
+.nav-links-desktop a:hover { color: #C1622A; }
 .nav-active { color: #C1622A !important; }
 .nav-cta {
-  padding: 9px 20px;
+  padding: 9px 20px !important;
   border: 1px solid rgba(193,98,42,0.7) !important;
-  border-radius: 2px;
-  color: #FAF9F7 !important;
+  border-radius: 2px; color: #FAF9F7 !important;
   transition: background 0.2s, border-color 0.2s !important;
 }
 .nav-cta:hover { background: #C1622A !important; border-color: #C1622A !important; }
 
 .eyebrow {
   font-size: 13px; font-weight: 600; letter-spacing: 0.16em;
-  text-transform: uppercase; color: #C1622A; margin-bottom: 20px;
+  text-transform: uppercase; color: #C1622A;
 }
 
 /* HERO */
-.page-hero {
+.about-hero {
   position: relative; height: 62vh; min-height: 460px;
   display: flex; align-items: flex-end; overflow: hidden;
 }
-.page-hero img {
+.about-hero img {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover;
-  filter: saturate(0.88) contrast(1.06) brightness(0.92);
+  object-fit: cover; filter: saturate(0.88) contrast(1.06) brightness(0.92);
 }
-.page-hero-grad {
+.about-hero-grad {
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(8,7,6,0.92) 0%, rgba(8,7,6,0.42) 60%, rgba(8,7,6,0.28) 100%);
 }
-.page-hero-content {
-  position: relative; z-index: 2;
-  padding: 0 48px 80px; max-width: 1000px;
+.about-hero-content {
+  position: relative; z-index: 2; padding: 0 48px 80px; max-width: 1000px;
 }
-.page-hero-content .eyebrow { color: rgba(193,98,42,0.9); margin-bottom: 22px; }
-.page-hero-content h1 {
+.about-hero-content .eyebrow { color: rgba(193,98,42,0.9); margin-bottom: 22px; }
+.about-hero-content h1 {
   font-family: 'Oswald', sans-serif; font-weight: 600;
   font-size: 64px; line-height: 1.02; letter-spacing: -0.01em;
   color: #FAF9F7; text-transform: uppercase;
 }
 
 /* WHO WE ARE */
-#who { padding: 130px 48px 100px; max-width: 1240px; margin: 0 auto; }
-#who h2 {
+.who-we-are-section { padding: 130px 48px 100px; max-width: 1240px; margin: 0 auto; }
+.who-we-are-section .eyebrow { margin-bottom: 20px; }
+.who-we-are-section h2 {
   font-family: 'Oswald', sans-serif; font-weight: 600;
   font-size: 44px; line-height: 1.1; text-transform: uppercase;
   margin-bottom: 60px; max-width: 700px;
 }
 .stats-grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
-  background: #D8D6D2;
-  border-top: 1px solid #D8D6D2;
-  border-bottom: 1px solid #D8D6D2;
+  background: #D8D6D2; border-top: 1px solid #D8D6D2; border-bottom: 1px solid #D8D6D2;
   margin-bottom: 70px;
 }
-.stat-cell {
-  background: #F5F3F0; padding: 30px 28px;
-}
-.stat-label {
-  font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
-  text-transform: uppercase; color: #585763; margin-bottom: 12px;
-}
-.stat-value {
-  font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 28px;
-}
+.stats-grid > div { background: #F5F3F0; padding: 30px 28px; }
+.stat-label { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #585763; margin-bottom: 12px; }
+.stat-value { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 28px; }
 .stat-value-sm { font-size: 16px; line-height: 1.4; }
-.who-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: start; }
-.who-cols p {
-  font-size: 16.5px; line-height: 1.65; color: #4B4A52; margin-bottom: 18px;
-}
-.who-cols p:last-child { margin-bottom: 0; }
-.who-img {
-  position: relative; aspect-ratio: 4/3; overflow: hidden; border-radius: 2px;
-}
+.who-we-are-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: start; }
+.who-we-are-grid p { font-size: 16.5px; line-height: 1.65; color: #4B4A52; margin-bottom: 18px; }
+.who-we-are-grid p:last-child { margin-bottom: 0; }
+.who-img { position: relative; aspect-ratio: 4/3; overflow: hidden; border-radius: 2px; }
 .who-img img {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover;
-  filter: saturate(0.88) contrast(1.05) brightness(0.98);
+  object-fit: cover; filter: saturate(0.88) contrast(1.05) brightness(0.98);
 }
 .who-img-grad {
   position: absolute; inset: 0;
@@ -119,21 +108,21 @@ nav {
 }
 
 /* APPROACH */
-#approach { background: #211F26; padding: 120px 48px; }
-#approach .inner { max-width: 1240px; margin: 0 auto; }
-#approach .eyebrow { margin-bottom: 20px; }
-#approach h2 {
+.approach-section { background: #211F26; padding: 120px 48px; }
+.approach-section .inner { max-width: 1240px; margin: 0 auto; }
+.approach-section .eyebrow { margin-bottom: 20px; }
+.approach-section h2 {
   font-family: 'Oswald', sans-serif; font-weight: 600;
   font-size: 40px; line-height: 1.15; text-transform: uppercase;
   color: #FAF9F7; margin-bottom: 40px; max-width: 780px;
 }
-.approach-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-.approach-cols p { font-size: 16.5px; line-height: 1.65; color: rgba(250,249,247,0.72); }
+.approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.approach-grid p { font-size: 16.5px; line-height: 1.65; color: rgba(250,249,247,0.72); }
 
 /* PRINCIPLES */
-#principles { padding: 130px 48px; max-width: 1240px; margin: 0 auto; }
-#principles .eyebrow { margin-bottom: 20px; }
-#principles h2 {
+.principles-section { padding: 130px 48px; max-width: 1240px; margin: 0 auto; }
+.principles-section .eyebrow { margin-bottom: 20px; }
+.principles-section h2 {
   font-family: 'Oswald', sans-serif; font-weight: 600;
   font-size: 40px; line-height: 1.1; text-transform: uppercase;
   margin-bottom: 60px; max-width: 700px;
@@ -142,94 +131,129 @@ nav {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
   background: #D8D6D2; border: 1px solid #D8D6D2;
 }
-.principle-card { background: #F5F3F0; padding: 48px 44px; }
+.principles-grid > div { background: #F5F3F0; padding: 48px 44px; }
 .principle-num {
   font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 600;
   letter-spacing: 0.1em; color: #C1622A; margin-bottom: 20px;
 }
-.principle-card h3 {
+.principles-grid h3 {
   font-family: 'Oswald', sans-serif; font-weight: 600;
   font-size: 24px; text-transform: uppercase; margin-bottom: 16px;
 }
-.principle-card p { font-size: 15.5px; line-height: 1.6; color: #4B4A52; }
-
-/* QUOTE */
-#quote { padding: 0 48px 150px; max-width: 900px; margin: 0 auto; text-align: center; }
-.quote-mark {
-  font-size: 70px; line-height: 1; color: #C1622A;
-  font-family: 'Oswald', sans-serif; margin-bottom: 10px;
-}
-#quote blockquote {
-  font-family: 'Oswald', sans-serif; font-weight: 500;
-  font-size: 30px; line-height: 1.35; margin-bottom: 30px;
-}
-.quote-attr {
-  font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; color: #585763;
-}
+.principles-grid p { font-size: 15.5px; line-height: 1.6; color: #4B4A52; }
 
 /* FOOTER */
 footer {
-  padding: 40px 48px; display: flex; align-items: center; justify-content: space-between;
-  background: #211F26; border-top: 1px solid rgba(80,78,75,0.4);
+  padding: 26px 48px; display: flex; align-items: center; justify-content: space-between;
+  background: #211F26; border-top: 1px solid rgba(55,52,60,0.8);
 }
-.footer-brand {
-  font-family: 'Oswald', sans-serif; font-weight: 600;
-  font-size: 14px; color: rgba(250,249,247,0.7);
-}
-.footer-brand span { opacity: 0.6; font-weight: 400; }
+.footer-row { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+.footer-brand { display: flex; align-items: center; gap: 16px; }
+.footer-brand img { height: 33px; width: auto; }
+.footer-copy { font-size: 12.5px; color: rgba(250,249,247,0.55); }
 .footer-links { display: flex; gap: 28px; font-size: 13.5px; color: rgba(250,249,247,0.7); }
 .footer-links a { transition: color 0.2s; }
 .footer-links a:hover { color: #C1622A; }
+
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  nav { padding: 16px 20px !important; }
+  .nav-links-desktop { display: none !important; }
+  .hamburger-btn { display: flex !important; }
+  .mobile-nav-panel {
+    display: flex !important;
+    position: fixed; top: 0; right: -100%; width: min(320px, 84vw); height: 100vh;
+    background: #141218; flex-direction: column; gap: 4px; padding: 110px 32px 32px;
+    transition: right 0.35s ease; z-index: 250; box-shadow: -20px 0 60px rgba(0,0,0,0.4);
+  }
+  .nav-toggle:checked ~ .mobile-nav-panel { right: 0; }
+  .nav-toggle:checked ~ .nav-scrim {
+    display: block !important; position: fixed; inset: 0;
+    background: rgba(8,7,6,0.55); z-index: 200;
+  }
+  .mobile-nav-panel a {
+    font-size: 17px; font-weight: 500; color: rgba(250,249,247,0.92);
+    padding: 14px 0; border-bottom: 1px solid rgba(55,52,60,0.7);
+  }
+  .mobile-nav-panel a.mnav-cta {
+    margin-top: 20px; border: none; text-align: center;
+    padding: 14px 20px; background: #C1622A; border-radius: 2px; color: #FAF9F7;
+  }
+  .about-hero { min-height: 420px !important; }
+  .about-hero-content { padding: 0 24px 56px !important; max-width: 100% !important; }
+  .about-hero-content h1 { font-size: 36px !important; }
+  .who-we-are-section { padding: 70px 24px 60px !important; }
+  .who-we-are-section h2 { font-size: 30px !important; }
+  .stats-grid { grid-template-columns: 1fr 1fr !important; }
+  .stats-grid > div { padding: 20px 24px !important; }
+  .who-we-are-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .approach-section { padding: 70px 24px !important; }
+  .approach-section h2 { font-size: 28px !important; }
+  .approach-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .principles-section { padding: 70px 24px !important; }
+  .principles-section h2 { font-size: 28px !important; }
+  .principles-grid { grid-template-columns: 1fr !important; }
+  .principles-grid > div { padding: 28px 24px !important; }
+  footer { padding: 26px 24px !important; }
+  .footer-row { flex-direction: column !important; gap: 14px !important; align-items: flex-start !important; }
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<input type="checkbox" class="nav-toggle" id="navToggle">
+
 <nav>
-  <a href="index.html" class="nav-logo">EAGLE RAY <span>AUSTRALIA</span></a>
-  <div class="nav-links">
+  <a href="index.html" class="nav-logo"><img src="assets/ERA_H_LOGO_WHT.png" alt="Eagle Ray Australia"></a>
+  <div class="nav-links-desktop">
     <a href="index.html">Home</a>
     <a href="about.html" class="nav-active">About</a>
     <a href="index.html#services">Services</a>
     <a href="contact.html" class="nav-cta">Get in Touch</a>
   </div>
+  <label for="navToggle" class="hamburger-btn"><span></span><span></span><span></span></label>
 </nav>
+<label for="navToggle" class="nav-scrim"></label>
+<div class="mobile-nav-panel">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="index.html#services">Services</a>
+  <a href="contact.html" class="mnav-cta">Get in Touch</a>
+</div>
 
 <!-- HERO -->
-<section class="page-hero">
+<section class="about-hero">
   <img src="assets/ERA_web_hero.jpg" alt="Pine forest">
-  <div class="page-hero-grad"></div>
-  <div class="page-hero-content">
+  <div class="about-hero-grad"></div>
+  <div class="about-hero-content">
     <div class="eyebrow">International Timber Trade</div>
     <h1>Trading built on<br>direct relationships.</h1>
   </div>
 </section>
 
 <!-- WHO WE ARE -->
-<section id="who">
+<section class="who-we-are-section">
   <div class="eyebrow">Who We Are</div>
   <h2>Seventeen years in the trade.</h2>
-
   <div class="stats-grid">
-    <div class="stat-cell">
+    <div>
       <div class="stat-label">Established</div>
       <div class="stat-value">2008</div>
     </div>
-    <div class="stat-cell">
+    <div>
       <div class="stat-label">Product</div>
       <div class="stat-value stat-value-sm">Pine &amp; plantation softwood &mdash; industrial grade</div>
     </div>
-    <div class="stat-cell">
+    <div>
       <div class="stat-label">Clients</div>
       <div class="stat-value stat-value-sm">Pallet, skid &amp; crate manufacturers</div>
     </div>
-    <div class="stat-cell">
+    <div>
       <div class="stat-label">Markets</div>
       <div class="stat-value stat-value-sm">Asia Pacific, SE Asia, Middle East</div>
     </div>
   </div>
-
-  <div class="who-cols">
+  <div class="who-we-are-grid">
     <div>
       <p>Eagle Ray Australia is an <strong>international timber trading company</strong> specialising in the procurement and export of pine and plantation softwood. We source industrial-grade timber directly from certified sawmills and move it to manufacturers across Asia Pacific and beyond.</p>
       <p>Our clients are primarily <strong>pallet, skid and crate manufacturers</strong> who depend on consistent volume, on-spec material, and reliable delivery. We manage the full trade cycle &mdash; sourcing, logistics, documentation &mdash; so our clients don't have to.</p>
@@ -242,11 +266,11 @@ footer {
 </section>
 
 <!-- APPROACH -->
-<section id="approach">
+<section class="approach-section">
   <div class="inner">
     <div class="eyebrow">Our Approach</div>
     <h2>We are brokers. Here's why that matters.</h2>
-    <div class="approach-cols">
+    <div class="approach-grid">
       <p>Eagle Ray Australia is a professional timber broker. We connect industrial buyers &mdash; primarily pallet, skid and crate manufacturers &mdash; with certified sawmill suppliers across Asia, Australasia and beyond. Our role is to find the right supply source, at the right specification and price, and coordinate everything that follows.</p>
       <p>Buyers choose a broker over going direct for the same reason companies hire specialists: the supply chain is our core competency, not a distraction from theirs. We carry the supplier relationships, market intelligence, compliance handling and logistics coordination &mdash; so our clients can focus on manufacturing.</p>
     </div>
@@ -254,26 +278,26 @@ footer {
 </section>
 
 <!-- PRINCIPLES -->
-<section id="principles">
+<section class="principles-section">
   <div class="eyebrow">What We Stand For</div>
   <h2>The principles we trade by.</h2>
   <div class="principles-grid">
-    <div class="principle-card">
+    <div>
       <div class="principle-num">01</div>
       <h3>Specification as standard.</h3>
       <p>Every shipment meets the agreed specification before we confirm loading. If it doesn't, we don't ship it. That's the minimum we hold ourselves to.</p>
     </div>
-    <div class="principle-card">
+    <div>
       <div class="principle-num">02</div>
       <h3>Relationships over volume.</h3>
       <p>We don't chase tonnage. We build partnerships. Our buyers know our team by name and deal with people who understand their supply chain.</p>
     </div>
-    <div class="principle-card">
+    <div>
       <div class="principle-num">03</div>
       <h3>Direct access to our team.</h3>
       <p>When you enquire, you're talking to the people who sourced the timber and arranged the freight. No handoffs, no scripts.</p>
     </div>
-    <div class="principle-card">
+    <div>
       <div class="principle-num">04</div>
       <h3>One standard. Every market.</h3>
       <p>We apply the same quality threshold regardless of destination &mdash; no exceptions based on geography or order size.</p>
@@ -281,20 +305,18 @@ footer {
   </div>
 </section>
 
-<!-- PULL QUOTE -->
-<section id="quote">
-  <div class="quote-mark">&ldquo;</div>
-  <blockquote>Every shipment we send carries our name. That's not a slogan &mdash; it's the reason we've never had to find a new buyer.</blockquote>
-  <div class="quote-attr">Eagle Ray Australia &middot; International Timber Trade</div>
-</section>
-
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">EAGLE RAY AUSTRALIA <span>&copy; 2026 Eagle Ray Australia Pty Ltd</span></div>
-  <div class="footer-links">
-    <a href="index.html">Home</a>
-    <a href="index.html#services">Services</a>
-    <a href="contact.html">Contact</a>
+  <div class="footer-row">
+    <div class="footer-brand">
+      <img src="assets/ERA_H_LOGO_WHT.png" alt="Eagle Ray Australia">
+      <span class="footer-copy">&copy; 2026 Eagle Ray Australia Pty Ltd</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </div>
 </footer>
 
