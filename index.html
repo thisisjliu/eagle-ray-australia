@@ -243,6 +243,7 @@ footer {
 }
 .footer-brand img { height: 33px; width: auto; }
 .footer-copy { font-size: 12.5px; color: rgba(250,249,247,0.55); }
+.footer-copy-row { padding-top: 20px; border-top: 1px solid rgba(55,52,60,0.5); margin-top: 20px; }
 .footer-links { display: flex; gap: 28px; font-size: 13.5px; color: rgba(250,249,247,0.7); }
 .footer-links a { transition: color 0.2s; }
 .footer-links a:hover { color: #C1622A; }
@@ -316,6 +317,7 @@ footer {
   .cta-logo-mark { width: 40px !important; top: 60px !important; right: 24px !important; }
   .cta-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
   .cta-address { text-align: left !important; }
+  .cta-eyebrow-addr { text-align: left !important; }
 
   .footer-row { flex-direction: column !important; gap: 14px !important; align-items: flex-start !important; }
 }
@@ -475,7 +477,7 @@ footer {
         <a href="mailto:sales@eaglerayaustralia.com.au" class="cta-email">sales@eaglerayaustralia.com.au</a>
       </div>
       <div>
-        <div class="cta-eyebrow" style="text-align:right;">Address</div>
+        <div class="cta-eyebrow cta-eyebrow-addr" style="text-align:right;">Address</div>
         <div class="cta-address">PO Box 2315 Ascot QLD 4007</div>
       </div>
     </div>
@@ -484,13 +486,15 @@ footer {
     <div class="footer-row">
       <div class="footer-brand">
         <img src="assets/ERA_H_LOGO_WHT.png" alt="Eagle Ray Australia">
-        <span class="footer-copy">&copy; 2026 Eagle Ray Australia Pty Ltd</span>
       </div>
       <div class="footer-links">
         <a href="about.html">About</a>
         <a href="#services">Services</a>
         <a href="contact.html">Contact</a>
       </div>
+    </div>
+    <div class="footer-copy-row">
+      <span class="footer-copy">&copy; 2026 Eagle Ray Australia Pty Ltd</span>
     </div>
   </footer>
 </section>
